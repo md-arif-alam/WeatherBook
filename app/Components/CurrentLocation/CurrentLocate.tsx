@@ -7,7 +7,7 @@ import { useGlobalContextUpdate } from "../../context/globalContext";
 
 function CurrentLocate() {
   const { setActiveCityCoords } = useGlobalContextUpdate();
-  const getPosition = () => {
+  const getPosition = (): Promise<GeolocationPosition>  => {
     return new Promise(function (resolve, reject) {
       navigator.geolocation.getCurrentPosition(resolve, reject);
     });
@@ -16,16 +16,17 @@ function CurrentLocate() {
     if (navigator.geolocation) {
         //If user allow location service then will fetch data & send it to setAciveCityCoords function.
          getPosition()
-        .then((position) => {
+        .then((position: GeolocationPosition) => {
           setActiveCityCoords([position.coords.latitude, position.coords.longitude]);
         })
-        .catch((err) => {
+        .catch((error: GeolocationPositionError) => {
           //If user denied location service then standard location weather will le shown on basis of latitude & latitude.
           setActiveCityCoords(28.67, 77.22);
           alert(
             "You have disabled location service. Allow 'This APP' to access your location. Your current location will be used for calculating Real time weather."
           );
-          console.log(err);
+          console.error("Error getting geolocation:", error);
+          // Handle error gracefully, maybe show a message to the user
         });
     } else {
       alert("Geolocation not available");
