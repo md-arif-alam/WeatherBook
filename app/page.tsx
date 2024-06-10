@@ -19,26 +19,57 @@ import { useGlobalContextUpdate } from "./context/globalContext";
 import { useEffect, useState } from "react";
 import CurrentLocate from "./Components/CurrentLocation/CurrentLocate";
 
+// const scrollToTop = () => {
+//   global.scrollTo({
+//     top: 0,
+//     behavior: 'smooth'
+//   });
+// };
+
+
 export default function Home() {
   const[location,setLocation] = useState(false)
+
+
   useEffect(()=>{
     if(navigator.geolocation)setLocation(true)
   },[])
   const { setActiveCityCoords } = useGlobalContextUpdate();
 
+
+  // useEffect(() => {
+  //   // Check if global object is available
+  //   if (typeof global !== 'undefined') {
+  //     // Attach scrollToTop function to the scroll event listener
+  //     global.addEventListener('scroll', scrollToTop);
+  //   }
+  
+  //   // Cleanup function to remove the scroll event listener
+  //   return () => {
+  //     if (typeof global !== 'undefined') {
+  //       global.removeEventListener('scroll', scrollToTop);
+  //     }
+  //   };
+  // }, []);
+
+
+
+
   const getClickedCityCords = (lat: number, lon: number) => {
     setActiveCityCoords([lat, lon]);
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    // scrollToTop();   
+    if (typeof global !== 'undefined'){
+      global.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+    }
   };
+
 
   return (
     <>
       {location ? <main className="mx-[1rem] lg:mx-[2rem] xl:mx-[6rem] 2xl:mx-[16rem] m-auto">
-      
       <Navbar />
       <div className="pb-4 flex flex-col gap-4 md:flex-row">
         <div className="flex flex-col gap-4 w-full min-w-[18rem] md:w-[35rem]">

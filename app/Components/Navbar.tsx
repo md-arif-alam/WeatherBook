@@ -13,7 +13,9 @@ function Navbar() {
 
   return (
     <div className="w-full py-4 flex items-center justify-between">
-      <div className="left"></div>
+      <div className="text-left">
+      <span className="bg-gradient-to-r from-red-500 via-yellow-300 to-green-500 inline-block text-transparent bg-clip-text text-4xl">Weatherbook</span>
+      </div>
       <div className="search-container flex shrink-0 w-full gap-2 sm:w-fit">
         <SearchDialog />
 
