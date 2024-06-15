@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useGlobalContext } from "@/app/context/globalContext";
+import { useglobalContext } from "@/app/context/globalContext";
 import {
   clearSky,
   cloudy,
@@ -13,7 +13,7 @@ import { kelvinToCelsius } from "@/app/utils/misc";
 import moment from "moment";
 
 function Temperature() {
-  const { forecast } = useGlobalContext();
+  const { forecast } = useglobalContext();
 
   const { main, timezone, name, weather } = forecast;
 

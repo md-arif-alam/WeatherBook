@@ -1,13 +1,13 @@
 "use client";
 
-import { useGlobalContext } from "@/app/context/globalContext";
+import { useglobalContext } from "@/app/context/globalContext";
 import { sun } from "@/app/utils/Icons";
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
 import { UvProgress } from "../UvProgress/UvProgress";
 
 function UvIndex() {
-  const { uvIndex } = useGlobalContext();
+  const { uvIndex } = useglobalContext();
 
   if (!uvIndex || !uvIndex.daily) {
     return <Skeleton className="h-[12rem] w-full" />;

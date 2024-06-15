@@ -14,13 +14,21 @@ import Visibility from "./Components/Visibility/Visibility";
 import Wind from "./Components/Wind/Wind";
 import defaultStates from "./utils/defaultStates";
 import FiveDayForecast from "./Components/FiveDayForecast/FiveDayForecast";
-import { useGlobalContextUpdate } from "./context/globalContext";
+import { useglobalContextUpdate } from "./context/globalContext";
 
 import { useEffect, useState } from "react";
 import CurrentLocate from "./Components/CurrentLocation/CurrentLocate";
 
+// import dynamic from "next/dynamic";
+
+// import { scrollTo } from "scroll-polyfill";
+
+// const DynamicWindow = dynamic(()=>(),{
+//   ssr:false,
+// })
+
 // const scrollToTop = () => {
-//   global.scrollTo({
+//   window.scrollTo({
 //     top: 0,
 //     behavior: 'smooth'
 //   });
@@ -34,42 +42,41 @@ export default function Home() {
   useEffect(()=>{
     if(navigator.geolocation)setLocation(true)
   },[])
-  const { setActiveCityCoords } = useGlobalContextUpdate();
+  const { setActiveCityCoords } = useglobalContextUpdate();
 
 
-  // useEffect(() => {
-  //   // Check if global object is available
-  //   if (typeof global !== 'undefined') {
-  //     // Attach scrollToTop function to the scroll event listener
-  //     global.addEventListener('scroll', scrollToTop);
-  //   }
+
   
-  //   // Cleanup function to remove the scroll event listener
-  //   return () => {
-  //     if (typeof global !== 'undefined') {
-  //       global.removeEventListener('scroll', scrollToTop);
-  //     }
-  //   };
-  // }, []);
+
+const getClickedCityCords = (lat: number, lon: number): void => {
+  setActiveCityCoords([lat, lon]);
+  if (typeof window !== 'undefined'){
+   
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    
+  }
+};
+
+
+ // Check if window object is defined (not SSR)
+  // Dynamically import scrollTo function only on the client-side
+//   const scrollToImport = dynamic(
+//     () => import('./context/scroll'),
+//     { ssr: false }
+//   );
+// }
 
 
 
-
-  const getClickedCityCords = (lat: number, lon: number) => {
-    setActiveCityCoords([lat, lon]);
-    // scrollToTop();   
-    if (typeof global !== 'undefined'){
-      global.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-    }
-  };
 
 
   return (
-    <>
-      {location ? <main className="mx-[1rem] lg:mx-[2rem] xl:mx-[6rem] 2xl:mx-[16rem] m-auto">
+  <>
+      {location ?
+       <main className="mx-[1rem] lg:mx-[2rem] xl:mx-[6rem] 2xl:mx-[16rem] m-auto">
       <Navbar />
       <div className="pb-4 flex flex-col gap-4 md:flex-row">
         <div className="flex flex-col gap-4 w-full min-w-[18rem] md:w-[35rem]">
@@ -121,7 +128,7 @@ export default function Home() {
           <a
             href="https://github.com/md-arif-alam"
             target="_blank"
-            className=" text-green-300 font-bold"
+            className=" text-blue-300 font-bold"
           >
             Md Arif Alam
           </a>
@@ -132,8 +139,10 @@ export default function Home() {
     <main className='className="mx-[1rem] lg:mx-[2rem] xl:mx-[6rem] 2xl:mx-[16rem] m-auto'>    
        <CurrentLocate/>
     </main>
+
    }
-    </>
-    
-  );
+</>
+
+)
+  
 }

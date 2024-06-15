@@ -1,12 +1,12 @@
 "use client";
-import { useGlobalContext } from "@/app/context/globalContext";
+import { useglobalContext } from "@/app/context/globalContext";
 import { thermometer } from "@/app/utils/Icons";
 import { kelvinToCelsius } from "@/app/utils/misc";
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
 
 function FeelsLike() {
-  const { forecast } = useGlobalContext();
+  const { forecast } = useglobalContext();
 
   if (!forecast || !forecast?.main || !forecast?.main?.feels_like) {
     return <Skeleton className="h-[12rem] w-full" />;

@@ -2,11 +2,13 @@
 import React, { useEffect } from 'react'
 
 
-import { useGlobalContextUpdate } from "../../context/globalContext";
+import { useglobalContextUpdate } from "../../context/globalContext";
+import Image from 'next/image'
+import WeatherIcons from '../../../public/WeatherIcons.gif'
 
 
 function CurrentLocate() {
-  const { setActiveCityCoords } = useGlobalContextUpdate();
+  const { setActiveCityCoords } = useglobalContextUpdate();
   const getPosition = (): Promise<GeolocationPosition>  => {
     return new Promise(function (resolve, reject) {
       navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -46,14 +48,21 @@ function CurrentLocate() {
  
   return (
      <div className="search-container flex shrink-0 w-full gap-2 sm:w-fit">
-            <img src="./WeatherIcons.gif" alt="image" width="50%"  />
-          <h3 className='text-white font-3xl font-300'>
+   
+ 
+          <h1 className='text-white font-3xl font-300 text-center mt-2'>
             Detecting your location
-          </h3>
-          <h3 className='text-white mt-4'>
+          </h1>
+          <Image
+            className='flex text-center'
+             src={WeatherIcons}
+             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            alt="Loading Picture"
+       />
+          <span className='text-blue-500 mt-4'>
             Your current location wil be displayed on the App <br></br> & used
             for calculating Real time weather.
-          </h3>
+          </span>
         </div>
          
   )

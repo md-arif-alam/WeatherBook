@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useGlobalContext } from "@/app/context/globalContext";
+import { useglobalContext } from "@/app/context/globalContext";
 import { clearSky, cloudy, drizzleIcon, rain, snow } from "@/app/utils/Icons";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
@@ -12,7 +12,7 @@ import moment from "moment";
 import { kelvinToCelsius } from "@/app/utils/misc";
 
 function DailyForecast() {
-  const { forecast, fiveDayForecast } = useGlobalContext();
+  const { forecast, fiveDayForecast } = useglobalContext();
 
   const { weather } = forecast;
   const { city, list } = fiveDayForecast;

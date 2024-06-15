@@ -1,7 +1,7 @@
 "use client";
 import {
-  useGlobalContext,
-  useGlobalContextUpdate,
+  useglobalContext,
+  useglobalContextUpdate,
 } from "@/app/context/globalContext";
 import { commandIcon } from "@/app/utils/Icons";
 import { Button } from "@/components/ui/button";
@@ -10,8 +10,8 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import React from "react";
 
 function SearchDialog() {
-  const { geoCodedList, inputValue, handleInput } = useGlobalContext();
-  const { setActiveCityCoords } = useGlobalContextUpdate();
+  const { geoCodedList, inputValue, handleInput } = useglobalContext();
+  const { setActiveCityCoords } = useglobalContextUpdate();
 
   const [hoveredIndex, setHoveredIndex] = React.useState<number>(0);
 

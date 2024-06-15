@@ -1,12 +1,12 @@
 "use client";
-import { useGlobalContext } from "@/app/context/globalContext";
+import { useglobalContext } from "@/app/context/globalContext";
 import { people } from "@/app/utils/Icons";
 import { formatNumber } from "@/app/utils/misc";
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
 
 function Population() {
-  const { fiveDayForecast } = useGlobalContext();
+  const { fiveDayForecast } = useglobalContext();
   const { city } = fiveDayForecast;
 
   if (!fiveDayForecast || !city) {

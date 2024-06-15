@@ -1,5 +1,5 @@
 "use client";
-import { useGlobalContext } from "@/app/context/globalContext";
+import { useglobalContext } from "@/app/context/globalContext";
 import { thermo } from "@/app/utils/Icons";
 import { airQulaityIndexText } from "@/app/utils/misc";
 import { Progress } from "@/components/ui/progress";
@@ -11,7 +11,7 @@ import React from "react";
 
 
 function AirPollution() {
-  const { airQuality } = useGlobalContext();
+  const { airQuality } = useglobalContext();
 
   // check if airQuality is available, check if necessary properties are available
   if (
@@ -38,7 +38,7 @@ function AirPollution() {
        dark:bg-dark-grey shadow-sm dark:shadow-none col-span-full sm-2:col-span-2 md:col-span-2 xl:col-span-2"
     >
       <h2 className="flex items-center gap-2 font-medium">
-        {thermo}Air Pollusion
+        {thermo}Air Pollution
       </h2>
       <Progress value={airQualityIndex} max={100} className="progress" />
       <p className="text-sm">Air quality is {filteredIndex?.description}. </p>

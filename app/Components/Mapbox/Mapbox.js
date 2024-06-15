@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { useGlobalContext } from "@/app/context/globalContext";
+import { useglobalContext } from "@/app/context/globalContext";
 
 function FlyToActiveCity({ activeCityCords }) {
   const map = useMap();
@@ -26,7 +26,7 @@ function FlyToActiveCity({ activeCityCords }) {
 }
 
 function Mapbox() {
-  const { forecast } = useGlobalContext(); // Your coordinates
+  const { forecast } = useglobalContext(); // Your coordinates
 
   const activeCityCords = forecast?.coord;
 

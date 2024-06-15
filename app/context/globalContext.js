@@ -7,8 +7,8 @@ import defaultStates from "../utils/defaultStates";
 
 import { debounce } from "lodash";
 
-const GlobalContext = createContext();
-const GlobalContextUpdate = createContext();
+const globalContext = createContext();
+const globalContextUpdate = createContext();
 
 export const GlobalContextProvider = ({ children }) => {
   const [forecast, setForecast] = useState({});
@@ -106,7 +106,7 @@ export const GlobalContextProvider = ({ children }) => {
   }, [activeCityCoords]);
 
   return (
-    <GlobalContext.Provider
+    <globalContext.Provider
       value={{
         forecast,
         airQuality,
@@ -118,16 +118,16 @@ export const GlobalContextProvider = ({ children }) => {
         setActiveCityCoords,
       }}
     >
-      <GlobalContextUpdate.Provider
+      <globalContextUpdate.Provider
         value={{
           setActiveCityCoords,
         }}
       >
         {children}
-      </GlobalContextUpdate.Provider>
-    </GlobalContext.Provider>
+      </globalContextUpdate.Provider>
+    </globalContext.Provider>
   );
 };
 
-export const useGlobalContext = () => useContext(GlobalContext);
-export const useGlobalContextUpdate = () => useContext(GlobalContextUpdate);
+export const useglobalContext = () => useContext(globalContext);
+export const useglobalContextUpdate = () => useContext(globalContextUpdate);
