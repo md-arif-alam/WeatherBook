@@ -34,7 +34,7 @@
     "scroll-polyfill": "^1.0.1",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
-    "jsdom-window": "^3.0.2" 
+    "jsdom-window": "^3.0.2.tgz" 
 
   },
   "devDependencies": {
