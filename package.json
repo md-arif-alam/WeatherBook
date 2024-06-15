@@ -33,7 +33,9 @@
     "react-scroll-to-top": "^3.0.0",
     "scroll-polyfill": "^1.0.1",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "jsdom-window": "^3.0.2" 
+
   },
   "devDependencies": {
     "@types/node": "^20",
